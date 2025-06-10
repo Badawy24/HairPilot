@@ -1,14 +1,5 @@
-<!-- Page Header Start -->
-<div class="text-center py-5" style="background-color: var(--color-secondary);">
-  <div class="container">
-    <h2 class="display-5 fw-bold">Gallery</h2>
-    <nav>
-      <a href="/" class="text-decoration-none" style="color: var(--color-primary);">Home</a> /
-      <a href="/gallery" class="text-decoration-none" style="color: var(--color-primary);">Gallery</a>
-    </nav>
-  </div>
-</div>
-<!-- Page Header End -->
+<app-headerpage *ngIf="showHeader" [titleOfPage]="'Gallery'" [link]="'gallery'"></app-headerpage>
+
 
 <!-- Portfolio Start -->
 <div class="portfolio py-5 bg-white">

@@ -1,24 +1,12 @@
-<!-- Page Header -->
-<div class="text-center py-5" style="background-color: var(--color-secondary);">
-  <div class="container">
-    <h2 class="display-5 fw-bold">Contact</h2>
-    <nav>
-      <a href="/" class="text-decoration-none" style="color: var(--color-primary);">Home</a> /
-      <a href="/contact" class="text-decoration-none" style="color: var(--color-primary);">Contact</a>
-    </nav>
-  </div>
-</div>
+<app-headerpage *ngIf="showHeader" [titleOfPage]="'Contact us'" [link]="'contact'"></app-headerpage>
 
-<!-- Contact Form Section -->
 <section class="contact-section">
   <div class="container-fluid">
     <div class="row g-0">
-      <!-- Left Side Image -->
       <div class="col-lg-6 d-none d-lg-block">
         <div class="contact-image h-100 w-100"></div>
       </div>
 
-      <!-- Right Side Form -->
       <div class="col-lg-6 d-flex align-items-center" style="background-color: #1d2434; color: white;">
         <div class="container py-5 px-4">
           <h2 class="text-white mb-4 text-center">If You Have Any Query, Please Contact Us</h2>

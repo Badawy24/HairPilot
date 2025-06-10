@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HeaderpageComponent } from '../headerpage/headerpage.component';
+
 
 @Component({
   standalone: true,
   selector: 'app-price',
   templateUrl: './price.component.html',
   styleUrls: ['./price.component.css'],
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule,HeaderpageComponent]
 })
 export class PriceComponent {
   priceItems = [
@@ -24,4 +26,5 @@ export class PriceComponent {
     { title: 'Clean Up', price: '$19.99', image: 'assets/img/price-11.jpg' },
     { title: 'Massage', price: '$20.99', image: 'assets/img/price-12.jpg' }
   ];
+  @Input() showHeader = true;
 }

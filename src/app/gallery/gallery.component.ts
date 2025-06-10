@@ -1,11 +1,13 @@
 // gallery.component.ts
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeaderpageComponent } from '../headerpage/headerpage.component';
+
 
 @Component({
   selector: 'app-gallery',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,HeaderpageComponent],
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.css']
 })
@@ -29,6 +31,7 @@ import { CommonModule } from '@angular/common';
   isVisible(category: string): boolean {
     return this.activeFilter === '*' || this.activeFilter === category;
   }
+  @Input() showHeader = true;
 }
 
 

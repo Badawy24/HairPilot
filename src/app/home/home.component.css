@@ -1,0 +1,221 @@
+.hero {
+    position: relative;
+    width: 100%;
+    margin-bottom: 45px;
+    height: calc(100vh - 60px);
+    background: var(--color-secondary);
+    overflow: hidden;
+}
+
+.hero .container-fluid {
+    padding: 0;
+}
+
+.hero .hero-image {
+    position: relative;
+    text-align: right;
+}
+
+.hero .hero-image img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.hero .hero-text {
+    position: relative;
+    padding-left: 75px;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero .hero-text h1 {
+    color: var(--color-primary);
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero .hero-text p {
+    color: var(--color-primary);
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.hero .hero-text .btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+    background: none;
+    border: 2px solid var(--color-primary);
+    border-radius: 0;
+    transition: .3s;
+}
+
+.hero .hero-text .btn:hover {
+    color: var(--color-secondary);
+    background: var(--color-primary);
+}
+
+.hero .btn-play {
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    box-sizing: content-box;
+    display: block;
+    width: 32px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    padding: 18px 20px 18px 28px;
+}
+
+.hero .btn-play:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    animation: pulse-border 1500ms ease-out infinite;
+}
+
+.hero .btn-play:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+    width: 80px;
+    height: 80px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    transition: all 200ms;
+}
+
+.hero .btn-play:hover:after {
+    background-color: darken(var(--color-primary), 10%);
+}
+
+.hero .btn-play img {
+    position: relative;
+    z-index: 3;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+.hero .btn-play span {
+    display: block;
+    position: relative;
+    z-index: 3;
+    width: 0;
+    height: 0;
+    border-left: 32px solid var(--color-light);
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+}
+
+@keyframes pulse-border {
+    0% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+        opacity: 0;
+    }
+}
+
+#videoModal .modal-dialog {
+    position: relative;
+    max-width: 800px;
+    margin: 60px auto;
+}
+
+#videoModal .modal-body {
+    position: relative;
+    padding: 0px;
+}
+
+#videoModal .close {
+    position: absolute;
+    right: 0px;
+    top: -12px;
+    z-index: 999;
+    font-size: 50px;
+    font-weight: normal;
+    color: var(--color-light);
+    opacity: 1;
+}
+
+@media (max-width: 991.98px) {
+    .hero .hero-text {
+        padding-left: 15px;
+    }
+
+    .hero .hero-text h1 {
+        font-size: 35px;
+    }
+
+    .hero .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero .hero-text .btn {
+        padding: 12px 30px;
+        font-size: 15px;
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero .hero-text h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .hero .hero-text p {
+        font-size: 14px;
+    }
+
+    .hero .hero-text .btn {
+        padding: 10px 25px;
+        font-size: 15px;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hero .hero-text h1 {
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .hero .hero-text p {
+        font-size: 14px;
+    }
+
+    .hero .hero-text .btn {
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+}
