@@ -1,1 +1,73 @@
-<p>gallery works!</p>
+<!-- Page Header Start -->
+<div class="text-center py-5" style="background-color: var(--color-secondary);">
+  <div class="container">
+    <h2 class="display-5 fw-bold">Gallery</h2>
+    <nav>
+      <a href="/" class="text-decoration-none" style="color: var(--color-primary);">Home</a> /
+      <a href="/gallery" class="text-decoration-none" style="color: var(--color-primary);">Gallery</a>
+    </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Portfolio Start -->
+<div class="portfolio py-5 bg-white">
+  <div class="container">
+    <div class="section-header text-center mb-4">
+      <p>Barber Image Gallery</p>
+      <h2>Some Images From Our Barber Gallery</h2>
+    </div>
+
+    <!-- Filters -->
+    <div class="row mb-4">
+      <div class="col-12 text-center">
+        <ul id="portfolio-flters" class="list-inline">
+          <li 
+            class="list-inline-item px-3 py-2 border fw-bold" 
+            [class.filter-active]="activeFilter === '*'" 
+            (click)="setFilter('*')"
+          >
+            All
+          </li>
+          <li 
+            class="list-inline-item px-3 py-2 border fw-bold" 
+            [class.filter-active]="activeFilter === 'first'" 
+            (click)="setFilter('first')"
+          >
+            Hair Cut
+          </li>
+          <li 
+            class="list-inline-item px-3 py-2 border fw-bold" 
+            [class.filter-active]="activeFilter === 'second'" 
+            (click)="setFilter('second')"
+          >
+            Beard Style
+          </li>
+          <li 
+            class="list-inline-item px-3 py-2 border fw-bold" 
+            [class.filter-active]="activeFilter === 'third'" 
+            (click)="setFilter('third')"
+          >
+            Color & Wash
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="row portfolio-container">
+      <div 
+        class="col-lg-4 col-md-6 col-sm-12 portfolio-item mb-4" 
+        *ngFor="let item of galleryItems"
+        [class.d-none]="!isVisible(item.category)"
+      >
+        <div class="portfolio-wrap position-relative w-100 h-100 overflow-hidden">
+          <a [href]="item.src" data-lightbox="portfolio">
+            <img [src]="item.src" alt="Portfolio Image" class="img-fluid w-100 h-100 object-fit-cover" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Portfolio End -->

@@ -1,1 +1,36 @@
-<p>price works!</p>
+<div class="text-center py-5" style="background-color: var(--color-secondary);">
+  <div class="container">
+    <h2 class="display-5 fw-bold">Price</h2>
+    <nav>
+      <a href="/" class="text-decoration-none" style="color: var(--color-primary);">Home</a> /
+      <a href="/price" class="text-decoration-none" style="color: var(--color-primary);">Price</a>
+    </nav>
+  </div>
+</div>
+<!-- Page Header End -->
+
+<!-- Pricing Start -->
+<div class="price">
+  <div class="container">
+    <div class="section-header text-center">
+      <p  style="color: var(--color-gray);">Our Best Pricing</p>
+      <h2 class=" mb-5     text-center">We Provide Best Price in the City</h2>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let item of priceItems">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="price-item">
+            <div class="price-img">
+              <img [src]="item.image" [alt]="item.title" />
+            </div>
+            <div class="price-text">
+              <h2>{{ item.title }}</h2>
+              <h3>{{ item.price }}</h3>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<!-- Pricing End -->

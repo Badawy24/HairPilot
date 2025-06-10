@@ -1,0 +1,58 @@
+/* Contact Section Styling */
+.contact-section {
+  min-height: 100vh;
+  background-color: var(--color-light);
+}
+
+.contact-image {
+
+background-image: url('../../assets/img/contact.jpg');
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* Form Styling */
+.contact-section .form-control {
+  background: none;
+  border: none;
+  border-bottom: 2px solid var(--color-secondary);
+  border-radius: 0;
+  color: white;
+  font-size: 16px;
+  padding: 12px 0;
+}
+
+.contact-section .form-control::placeholder {
+  color: #aaa;
+}
+
+.contact-section .form-control:focus {
+  box-shadow: none;
+  border-color: var(--color-light);
+}
+
+/* Button Styling */
+.contact-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-secondary);
+  background: none;
+  border: 2px solid var(--color-secondary);
+  border-radius: 0;
+  transition: 0.3s;
+}
+
+.contact-btn :hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+/* Responsive Fixes */
+@media (max-width: 991.98px) {
+  .contact-section {
+    padding: 30px 15px;
+  }
+}

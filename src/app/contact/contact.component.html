@@ -1,1 +1,49 @@
-<p>contact works!</p>
+<!-- Page Header -->
+<div class="text-center py-5" style="background-color: var(--color-secondary);">
+  <div class="container">
+    <h2 class="display-5 fw-bold">Contact</h2>
+    <nav>
+      <a href="/" class="text-decoration-none" style="color: var(--color-primary);">Home</a> /
+      <a href="/contact" class="text-decoration-none" style="color: var(--color-primary);">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Contact Form Section -->
+<section class="contact-section">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <!-- Left Side Image -->
+      <div class="col-lg-6 d-none d-lg-block">
+        <div class="contact-image h-100 w-100"></div>
+      </div>
+
+      <!-- Right Side Form -->
+      <div class="col-lg-6 d-flex align-items-center" style="background-color: #1d2434; color: white;">
+        <div class="container py-5 px-4">
+          <h2 class="text-white mb-4 text-center">If You Have Any Query, Please Contact Us</h2>
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+            <div class="mb-3">
+              <input formControlName="name" type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+              <input formControlName="email" type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="mb-3">
+              <input formControlName="subject" type="text" class="form-control" placeholder="Subject" required>
+            </div>
+            <div class="mb-3">
+              <textarea formControlName="message" class="form-control" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <button type="submit" class="btn contact-btn" [disabled]="isSending || contactForm.invalid">
+              {{ isSending ? 'جاري الإرسال...' : 'Send Message' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
