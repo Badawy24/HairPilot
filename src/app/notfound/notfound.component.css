@@ -1,0 +1,15 @@
+.parent-div{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-muted);
+}
+.container-div{
+    width: 50%;
+}
+.img-404{
+    width: 100%;
+    height: 100%;
+}
