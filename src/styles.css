@@ -13,7 +13,6 @@ body {
     color: var(--color-gray);
     background: var(--color-light);
     font-family: 'Open Sans', sans-serif;
-    height: 3000px;
 }
 
 h1,
@@ -29,6 +28,7 @@ h6 {
 a {
     color: var(--color-muted);
     transition: .3s;
+    cursor: pointer;
 }
 
 a:hover,
