@@ -1,0 +1,78 @@
+body {
+  background-color: var(--color-primary); /* خلفية داكنة */
+  color: var(--color-light);
+  font-family: 'Segoe UI', sans-serif;
+}
+.bookh3{
+  color: var(--color-secondary); /* لون النص */
+  text-align: center;
+  margin-bottom: 20px;
+}
+.card {
+  background-color: var(--color-primary); /* نفس لون خلفية الفورم */
+  border: 1px solid var(--color-secondary); /* إطار ذهبي */
+}
+
+.card-title {
+  color: var(--color-light);
+}
+
+.form-label {
+  color: var(--color-secondary); /* لون النص */
+}
+
+.form-control,
+.form-select {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-secondary);
+  border-radius: 0;
+  color: var(--color-light);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: transparent;
+  color: var(--color-light);
+  border-color: #f7d774; /* ممكن تضيف ده في :root لو تحب */
+  box-shadow: none;
+}
+
+::placeholder {
+  color: var(--color-gray-light);
+}
+
+.btn-success {
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+/* تنسيق العنصر select */
+.form-select {
+  background-color: var(--color-primary) !important;
+  color: var(--color-light) !important;
+  border: none;
+  border-bottom: 2px solid var(--color-secondary);
+  border-radius: 0;
+  appearance: none;
+  padding-right: 2rem;
+}
+
+/* تنسيق الخيارات داخل select */
+.form-select option {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+}
+
+/* عند التركيز */
+.form-select:focus {
+  border-color: #f7d774;
+  box-shadow: none;
+}

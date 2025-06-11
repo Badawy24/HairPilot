@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { BookingComponent } from '../booking/booking.component'; 
+
 
 @Component({
   standalone: true,
   selector: 'app-price',
   templateUrl: './price.component.html',
   styleUrls: ['./price.component.css'],
-  imports: [CommonModule, RouterModule]
+  imports: [CommonModule, RouterModule ,BookingComponent]
 })
 export class PriceComponent {
   priceItems = [

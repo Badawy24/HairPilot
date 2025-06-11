@@ -8,11 +8,12 @@ import { FooterComponent } from "./footer/footer.component";
 import { GalleryComponent } from "./gallery/gallery.component";
 import { PriceComponent } from "./price/price.component";
 import { ServiceComponent } from "./service/service.component";
+import { BookingComponent } from "./booking/booking.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, HomeComponent, AboutComponent, ContactComponent, FooterComponent, GalleryComponent, PriceComponent, ServiceComponent],
+  imports: [RouterOutlet, NavbarComponent, HomeComponent, AboutComponent, ContactComponent, FooterComponent, GalleryComponent, PriceComponent, ServiceComponent , BookingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
