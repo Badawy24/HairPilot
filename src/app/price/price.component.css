@@ -10,7 +10,7 @@
   justify-content: flex-start;
   flex-direction: row;
   margin-bottom: 30px;
-  background: rgba(29, 36, 52, 0.04); /* ممكن تسيبه كده أو تعدله */
+  background: rgba(29, 36, 52, 0.04);
   transition: 0.3s;
 }
 

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from '../footer/footer.component';
+import { HeaderpageComponent } from '../headerpage/headerpage.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule , FooterComponent],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule , FooterComponent,HeaderpageComponent],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
@@ -34,28 +35,20 @@ export class ContactComponent {
 
     const formData = this.contactForm.value;
 
-    // حط هنا رابط الـ API لما تكون جاهز
     const apiUrl = 'https://your-backend-api.com/contact';
 
     this.http.post(apiUrl, formData).subscribe({
       next: () => {
-        this.successMessage = 'تم إرسال الرسالة بنجاح.';
+        this.successMessage = 'Sent!';
         this.contactForm.reset();
         this.isSending = false;
       },
       error: () => {
-        this.errorMessage = 'حدث خطأ أثناء إرسال الرسالة. حاول مرة أخرى.';
+        this.errorMessage = 'Error!';
         this.isSending = false;
       }
     });
 
-    // أو استخدم محاكاة لو لسه مفيش API:
-    /*
-    setTimeout(() => {
-      this.successMessage = 'تم إرسال الرسالة بنجاح (محاكاة).';
-      this.contactForm.reset();
-      this.isSending = false;
-    }, 1000);
-    */
   }
+  @Input() showHeader = true;
 }
