@@ -7,6 +7,7 @@ import { PriceComponent } from './price/price.component';
 import { ContactComponent } from './contact/contact.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { BookingComponent } from './booking/booking.component';
+import { FaceComponent } from './face/face.component';
 
 
 export const routes: Routes = [
@@ -17,6 +18,7 @@ export const routes: Routes = [
     {path:'price',component:PriceComponent},
     {path:'gallery',component:GalleryComponent},
     {path:'contact',component:ContactComponent},
+    {path:'face',component:FaceComponent},
       { path: 'booking', component: BookingComponent },
 
     {path:'**',component:NotfoundComponent},
