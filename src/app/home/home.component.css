@@ -61,55 +61,6 @@
     background: var(--color-primary);
 }
 
-.hero .btn-play {
-    position: absolute;
-    z-index: 1;
-    top: 80%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    box-sizing: content-box;
-    display: block;
-    width: 32px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    padding: 18px 20px 18px 28px;
-}
-
-.hero .btn-play:before {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    display: block;
-    width: 80px;
-    height: 80px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    animation: pulse-border 1500ms ease-out infinite;
-}
-
-.hero .btn-play:after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    left: 50%;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    display: block;
-    width: 80px;
-    height: 80px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    transition: all 200ms;
-}
-
-.hero .btn-play:hover:after {
-    background-color: darken(var(--color-primary), 10%);
-}
 
 .hero .btn-play img {
     position: relative;
