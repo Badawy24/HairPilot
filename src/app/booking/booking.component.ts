@@ -54,21 +54,38 @@ export class BookingComponent implements OnInit {
     return `${formattedHour}:${formattedMinute} ${suffix}`;
   }
 
-  getBookedSlots() {
+  async getBookedSlots() {
     if (!this.selectedDate) return;
 
     const bookingsRef = collection(this.firestore, 'bookings');
     const q = query(bookingsRef, where("date", "==", this.selectedDate));
 
-    getDocs(q).then(snapshot => {
-      this.bookedSlots = snapshot.docs.map(doc => doc.data()['time'] + '|' + this.selectedDate);
-    });
+    const snapshot = await getDocs(q);
+    this.bookedSlots = snapshot.docs.map(doc => doc.data()['time'] + '|' + this.selectedDate);
   }
 
   isSlotAvailable(slot: string): boolean {
     if (!this.selectedDate) return true;
     const key = slot + '|' + this.selectedDate;
     return !this.bookedSlots.includes(key);
+  }
+
+  async suggestBestTime() {
+    if (!this.selectedDate) {
+      alert("Please select a date first");
+      return;
+    }
+
+    const unbooked = this.availableSlots.filter(slot => this.isSlotAvailable(slot));
+
+    if (unbooked.length === 0) {
+      alert("No available slots on this date ❌");
+      return;
+    }
+
+    // Suggest the earliest available slot
+    this.selectedSlot = unbooked[0];
+    alert(`Best available time suggested: ${this.selectedSlot} ✅`);
   }
 
   async bookSlot() {
@@ -93,7 +110,7 @@ export class BookingComponent implements OnInit {
       return;
     }
 
-    const selectedDay = selected.getDay(); // 1 is Monday
+    const selectedDay = selected.getDay();
     if (selectedDay === 1) {
       alert("Appointments are not allowed on Mondays ❌");
       return;
@@ -109,7 +126,7 @@ export class BookingComponent implements OnInit {
     const querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
       alert("This slot is already booked ❌");
-      this.getBookedSlots(); // إعادة التحقق مباشرة بعد الفشل
+      this.getBookedSlots();
       return;
     }
 
