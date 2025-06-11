@@ -6,6 +6,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { PriceComponent } from './price/price.component';
 import { ContactComponent } from './contact/contact.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { BookingComponent } from './booking/booking.component';
+
 
 export const routes: Routes = [
     {path:'',redirectTo:'home',pathMatch:'full'},
@@ -15,6 +17,8 @@ export const routes: Routes = [
     {path:'price',component:PriceComponent},
     {path:'gallery',component:GalleryComponent},
     {path:'contact',component:ContactComponent},
+      { path: 'booking', component: BookingComponent },
+
     {path:'**',component:NotfoundComponent},
 
 ];

@@ -1,0 +1,72 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-lg rounded-4">
+        <div class="card-body p-4">
+          <h3 class="bookh3 ">Book Your Appointment</h3>
+
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                [(ngModel)]="customerName"
+                name="name"
+                class="form-control"
+                placeholder="Enter your name"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input
+                type="text"
+                id="phone"
+                [(ngModel)]="customerPhone"
+                name="phone"
+                class="form-control"
+                placeholder="Enter your phone"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="date" class="form-label">Date</label>
+              <input
+                type="date"
+                id="date"
+                [(ngModel)]="selectedDate"
+                (change)="onDateChange()"
+                name="date"
+                class="form-control"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="slot" class="form-label">Select Time</label>
+              <select
+                [(ngModel)]="selectedSlot"
+                name="slot"
+                id="slot"
+                class="form-select"
+              >
+                <ng-container *ngFor="let slot of availableSlots">
+                  <option *ngIf="isSlotAvailable(slot)" [value]="slot">
+                    {{ slot }}
+                  </option>
+                </ng-container>
+              </select>
+            </div>
+
+            <div class="d-grid">
+              <button type="button" class="btn btn-success" (click)="bookSlot()">
+                Confirm Booking
+              </button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
