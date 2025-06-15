@@ -27,7 +27,7 @@
               <textarea formControlName="message" class="form-control" rows="5" placeholder="Message" required></textarea>
             </div>
             <button type="submit" class="btn contact-btn" [disabled]="isSending || contactForm.invalid">
-              {{ isSending ? 'جاري الإرسال...' : 'Send Message' }}
+              {{ isSending ? 'sending..' : 'Send Message' }}
             </button>
           </form>
         </div>

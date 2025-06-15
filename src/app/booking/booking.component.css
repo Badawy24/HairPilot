@@ -1,16 +1,16 @@
 body {
-  background-color: var(--color-primary); /* خلفية داكنة */
+  background-color: var(--color-primary); 
   color: var(--color-light);
   font-family: 'Segoe UI', sans-serif;
 }
 .bookh3{
-  color: var(--color-secondary); /* لون النص */
+  color: var(--color-secondary); 
   text-align: center;
   margin-bottom: 20px;
 }
 .card {
-  background-color: var(--color-primary); /* نفس لون خلفية الفورم */
-  border: 1px solid var(--color-secondary); /* إطار ذهبي */
+  background-color: var(--color-primary);  
+  border: 1px solid var(--color-secondary); 
 }
 
 .card-title {
@@ -18,7 +18,7 @@ body {
 }
 
 .form-label {
-  color: var(--color-secondary); /* لون النص */
+  color: var(--color-secondary); 
 }
 
 .form-control,
@@ -34,7 +34,7 @@ body {
 .form-select:focus {
   background-color: transparent;
   color: var(--color-light);
-  border-color: #f7d774; /* ممكن تضيف ده في :root لو تحب */
+  border-color: #f7d774; 
   box-shadow: none;
 }
 
@@ -54,7 +54,7 @@ body {
   color: var(--color-primary);
 }
 
-/* تنسيق العنصر select */
+
 .form-select {
   background-color: var(--color-primary) !important;
   color: var(--color-light) !important;
@@ -65,13 +65,13 @@ body {
   padding-right: 2rem;
 }
 
-/* تنسيق الخيارات داخل select */
+
 .form-select option {
   background-color: var(--color-primary);
   color: var(--color-light);
 }
 
-/* عند التركيز */
+
 .form-select:focus {
   border-color: #f7d774;
   box-shadow: none;

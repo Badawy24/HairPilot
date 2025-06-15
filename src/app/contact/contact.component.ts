@@ -33,9 +33,9 @@ export class ContactComponent {
     this.successMessage = '';
     this.errorMessage = '';
 
-    const formData = this.contactForm.value;
+    let formData = this.contactForm.value;
 
-    const apiUrl = 'https://your-backend-api.com/contact';
+    let apiUrl = 'https://your-backend-api.com/contact';
 
     this.http.post(apiUrl, formData).subscribe({
       next: () => {
