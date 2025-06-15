@@ -5,6 +5,10 @@
         <div class="card-body p-4">
           <h3 class="bookh3">Book Your Appointment</h3>
 
+          <div *ngIf="message" class="alert alert-info text-center rounded-3 py-2">
+            {{ message }}
+          </div>
+
           <form [formGroup]="form">
             <div class="mb-3">
               <label for="name" class="form-label">Full Name</label>
