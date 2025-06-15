@@ -1,0 +1,21 @@
+[33m7878cdb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreactive-form[m[33m, [m[1;31morigin/reactive-form[m[33m)[m HEAD@{0}: checkout: moving from main to reactive-form
+[33m33e7d4f[m[33m ([m[1;32mmain[m[33m)[m HEAD@{1}: checkout: moving from reactive-form to main
+[33m7878cdb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreactive-form[m[33m, [m[1;31morigin/reactive-form[m[33m)[m HEAD@{2}: checkout: moving from main to reactive-form
+[33m33e7d4f[m[33m ([m[1;32mmain[m[33m)[m HEAD@{3}: checkout: moving from reactive-form to main
+[33m7878cdb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreactive-form[m[33m, [m[1;31morigin/reactive-form[m[33m)[m HEAD@{4}: reset: moving to HEAD
+[33m7878cdb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreactive-form[m[33m, [m[1;31morigin/reactive-form[m[33m)[m HEAD@{5}: commit: Added new features to booking section
+[33m33e7d4f[m[33m ([m[1;32mmain[m[33m)[m HEAD@{6}: checkout: moving from main to reactive-form
+[33m33e7d4f[m[33m ([m[1;32mmain[m[33m)[m HEAD@{7}: checkout: moving from main to main
+[33m33e7d4f[m[33m ([m[1;32mmain[m[33m)[m HEAD@{8}: reset: moving to HEAD
+[33m33e7d4f[m[33m ([m[1;32mmain[m[33m)[m HEAD@{9}: pull origin main: Fast-forward
+[33mbbadb30[m[33m ([m[1;31morigin/bookingbranch[m[33m, [m[1;32mbookingbranch[m[33m)[m HEAD@{10}: checkout: moving from new-booking-update to main
+[33mdc0d197[m[33m ([m[1;31morigin/new-booking-update[m[33m, [m[1;32mnew-booking-update[m[33m)[m HEAD@{11}: commit: add ai booking
+[33mbbadb30[m[33m ([m[1;31morigin/bookingbranch[m[33m, [m[1;32mbookingbranch[m[33m)[m HEAD@{12}: checkout: moving from bookingbranch to new-booking-update
+[33mbbadb30[m[33m ([m[1;31morigin/bookingbranch[m[33m, [m[1;32mbookingbranch[m[33m)[m HEAD@{13}: checkout: moving from main to bookingbranch
+[33mbbadb30[m[33m ([m[1;31morigin/bookingbranch[m[33m, [m[1;32mbookingbranch[m[33m)[m HEAD@{14}: commit (merge): Merge branch 'main' of https://github.com/Badawy24/HairPilot
+[33mf5ef958[m HEAD@{15}: commit: add booking
+[33m41a99c7[m[33m ([m[1;31morigin/new-feature[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{16}: checkout: moving from new-feature to main
+[33m41a99c7[m[33m ([m[1;31morigin/new-feature[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{17}: checkout: moving from main to new-feature
+[33m41a99c7[m[33m ([m[1;31morigin/new-feature[m[33m, [m[1;32mnew-feature[m[33m)[m HEAD@{18}: commit (merge): Merge branch 'main' of https://github.com/Badawy24/HairPilot
+[33ma622b4c[m HEAD@{19}: commit: save update before push
+[33m16ce0b0[m HEAD@{20}: clone: from https://github.com/Badawy24/HairPilot.git

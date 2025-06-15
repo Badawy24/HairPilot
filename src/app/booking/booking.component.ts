@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -25,9 +25,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class BookingComponent implements OnInit {
 
+  @Input() showHeader: boolean = true;
   form!: FormGroup;
   availableSlots: string[] = [];
   bookedSlots: string[] = [];
+  message: string | null = null;
 
   constructor(private firestore: Firestore, private fb: FormBuilder) {}
 
@@ -45,6 +47,10 @@ export class BookingComponent implements OnInit {
     });
   }
 
+  showMessage(msg: string) {
+    this.message = msg;
+    setTimeout(() => this.message = null, 6000); 
+  }
   onDateChange() {
     let date = this.form.get('date')?.value;
     if (date) this.getBookedSlots(date);
@@ -82,23 +88,23 @@ export class BookingComponent implements OnInit {
   suggestBestTime() {
     let date = this.form.get('date')?.value;
     if (!date) {
-      alert("Please select a date first");
+      this.showMessage("Please select a date first");
       return;
     }
 
     let unbooked = this.availableSlots.filter(slot => this.isSlotAvailable(slot));
     if (unbooked.length === 0) {
-      alert("No available slots on this date ❌");
+      this.showMessage("No available slots on this date");
       return;
     }
 
     this.form.patchValue({ slot: unbooked[0] });
-    alert(`Best available time suggested: ${unbooked[0]} ✅`);
+    this.showMessage(`Best available time suggested: ${unbooked[0]}`);
   }
 
   async bookSlot() {
     if (this.form.invalid) {
-      alert("Please fill in all fields correctly.");
+      this.showMessage("Please fill in all fields correctly.");
       return;
     }
 
@@ -110,12 +116,12 @@ export class BookingComponent implements OnInit {
     selected.setHours(0, 0, 0, 0);
 
     if (selected < today) {
-      alert("You cannot select a past date ❌");
+      this.showMessage("You cannot select a past date");
       return;
     }
 
     if (selected.getDay() === 1) {
-      alert("Appointments are not allowed on Mondays ❌");
+      this.showMessage("Appointments are not allowed on Mondays");
       return;
     }
 
@@ -123,7 +129,7 @@ export class BookingComponent implements OnInit {
     let q = query(bookingsRef, where("date", "==", date), where("time", "==", slot));
     let querySnapshot = await getDocs(q);
     if (!querySnapshot.empty) {
-      alert("This slot is already booked ❌");
+      this.showMessage("This slot is already booked");
       this.getBookedSlots(date);
       return;
     }
@@ -136,7 +142,7 @@ export class BookingComponent implements OnInit {
       createdAt: new Date()
     });
 
-    alert("Booking confirmed successfully ✅");
+    this.showMessage("Booking confirmed successfully");
     this.form.reset();
     this.bookedSlots = [];
   }
