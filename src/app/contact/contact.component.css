@@ -1,6 +1,4 @@
-/* Contact Section Styling */
 .contact-section {
-  /* min-height: 100vh; */
   background-color: var(--color-light);
 }
 
@@ -12,7 +10,6 @@ background-image: url('../../assets/img/contact.jpg');
   background-position: center;
 }
 
-/* Form Styling */
 .contact-section .form-control {
   background: none;
   border: none;
@@ -32,7 +29,6 @@ background-image: url('../../assets/img/contact.jpg');
   border-color: var(--color-light);
 }
 
-/* Button Styling */
 .contact-btn {
   padding: 12px 30px;
   font-size: 16px;
@@ -50,7 +46,6 @@ background-image: url('../../assets/img/contact.jpg');
   color: var(--color-primary);
 }
 
-/* Responsive Fixes */
 @media (max-width: 991.98px) {
   .contact-section {
     padding: 30px 15px;

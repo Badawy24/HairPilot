@@ -1,4 +1,3 @@
-// gallery.component.ts
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderpageComponent } from '../headerpage/headerpage.component';
@@ -16,9 +15,9 @@ import { HeaderpageComponent } from '../headerpage/headerpage.component';
   activeFilter = '*';
 
   galleryItems = [
-    { src: 'assets/img/portfolio-1.jpg', category: 'third' },  // Hair Cut
-    { src: 'assets/img/portfolio-2.jpg', category: 'first' }, // Beard Style
-    { src: 'assets/img/portfolio-3.jpg', category: 'first' },  // Color & Wash
+    { src: 'assets/img/portfolio-1.jpg', category: 'third' },  
+    { src: 'assets/img/portfolio-2.jpg', category: 'first' }, 
+    { src: 'assets/img/portfolio-3.jpg', category: 'first' },  
     { src: 'assets/img/portfolio-4.jpg', category: 'first' },
     { src: 'assets/img/portfolio-5.jpg', category: 'second' },
     { src: 'assets/img/portfolio-6.jpg', category: 'second' },
