@@ -7,12 +7,14 @@
     </div>
 
     <div class="row justify-content-center mb-4">
-        <div class="col-md-6">
-            <input type="file" (change)="onFileSelected($event)" class="form-control mb-3" accept="image/*">
+        <div class="col-md-6 text-center">
+            <input *ngIf="!isLoading" type="file" (change)="onFileSelected($event)" class="form-control mb-3" accept="image/*">
+            <i *ngIf="isLoading" class="fas fa-spinner fa-spin fa-2x"></i>
         </div>
     </div>
-    <div class="text-center fw-bold mb-3" [innerText]="suggestion"
-        style="color: var(--color-primary); font-size: 20px;"></div>
+    <div class="text-center fw-bold mb-3" style="color: var(--color-primary); font-size: 20px;">
+        {{suggestion}}
+    </div>
 
     <div class="d-flex justify-content-center align-items-center" *ngIf="inputImageSrc">
         <div class="position-relative text-center w-25 h-auto">
