@@ -1,11 +1,9 @@
 # HairPilot - AI Powered Haircut Suggestion & Booking System
 
 HairPilot is an Angular standalone project designed to help users find their **perfect haircut** using AI-powered **face shape detection**. The project combines AI with practical salon functionalities such as online **appointment booking**, a **service gallery**, and **contact forms**.
----
+
+
 ## 🌐 Live Demo
-
-Explore the live version of the project:
-
 🔗 [https://hair-pilot.vercel.app/home](https://hair-pilot.vercel.app/home)
 ---
 
