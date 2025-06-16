@@ -41,25 +41,29 @@ export class FaceAiService {
 
   const ratioLengthToWidth = faceHeight / cheekboneWidth;
   const ratioForeheadToJaw = foreheadWidth / jawWidth;
+  const ratioJawToCheekbone = jawWidth / cheekboneWidth;
 
   console.log({
-    foreheadWidth,
-    cheekboneWidth,
-    jawWidth,
-    faceHeight,
+    foreheadWidth: foreheadWidth.toFixed(2),
+    cheekboneWidth: cheekboneWidth.toFixed(2),
+    jawWidth: jawWidth.toFixed(2),
+    faceHeight: faceHeight.toFixed(2),
     ratioLengthToWidth: ratioLengthToWidth.toFixed(2),
     ratioForeheadToJaw: ratioForeheadToJaw.toFixed(2),
+    ratioJawToCheekbone: ratioJawToCheekbone.toFixed(2)
   });
 
-  if (ratioLengthToWidth > 1.6) return 'Oblong';
-  if (ratioForeheadToJaw > 1.1 && foreheadWidth > cheekboneWidth) return 'Heart';
-  if (cheekboneWidth > foreheadWidth && cheekboneWidth > jawWidth) return 'Diamond';
+  // تصنيفات محسنة
+  if (ratioLengthToWidth >= 1.65) return 'Oblong';
+  if (ratioForeheadToJaw >= 1.15 && foreheadWidth > cheekboneWidth) return 'Heart';
+  if (cheekboneWidth > foreheadWidth && cheekboneWidth > jawWidth && ratioLengthToWidth <= 1.4) return 'Diamond';
   if (Math.abs(jawWidth - cheekboneWidth) < 20 && Math.abs(foreheadWidth - cheekboneWidth) < 20) return 'Square';
-  if (ratioLengthToWidth >= 1.3 && ratioLengthToWidth <= 1.6) return 'Oval';
-  if (ratioLengthToWidth < 1.3) return 'Round';
+  if (ratioLengthToWidth >= 1.35 && ratioLengthToWidth < 1.65) return 'Oval';
+  if (ratioLengthToWidth < 1.35) return 'Round';
 
   return 'Unknown';
 }
+
 
 
 
