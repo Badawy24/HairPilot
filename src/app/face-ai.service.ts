@@ -7,7 +7,7 @@ import * as faceapi from 'face-api.js';
 export class FaceAiService {
 
   private modelsLoaded = false;
-  console.log(5);
+  console.log(6);
   async loadModels() {
     if (this.modelsLoaded) return;
     const MODEL_URL = 'assets/models/';
@@ -39,7 +39,7 @@ export class FaceAiService {
     chin
   );
 
-  const ratioLengthToWidth = faceHeight / cheekboneWidth;
+  const ratioLengthToCheekbone = faceHeight / cheekboneWidth;
   const ratioForeheadToJaw = foreheadWidth / jawWidth;
   const ratioJawToCheekbone = jawWidth / cheekboneWidth;
 
@@ -48,21 +48,21 @@ export class FaceAiService {
     cheekboneWidth: cheekboneWidth.toFixed(2),
     jawWidth: jawWidth.toFixed(2),
     faceHeight: faceHeight.toFixed(2),
-    ratioLengthToWidth: ratioLengthToWidth.toFixed(2),
+    ratioLengthToCheekbone: ratioLengthToCheekbone.toFixed(2),
     ratioForeheadToJaw: ratioForeheadToJaw.toFixed(2),
     ratioJawToCheekbone: ratioJawToCheekbone.toFixed(2)
   });
 
-  // تصنيفات محسنة
-  if (ratioLengthToWidth >= 1.65) return 'Oblong';
-  if (ratioForeheadToJaw >= 1.15 && foreheadWidth > cheekboneWidth) return 'Heart';
-  if (cheekboneWidth > foreheadWidth && cheekboneWidth > jawWidth && ratioLengthToWidth <= 1.4) return 'Diamond';
-  if (Math.abs(jawWidth - cheekboneWidth) < 20 && Math.abs(foreheadWidth - cheekboneWidth) < 20) return 'Square';
-  if (ratioLengthToWidth >= 1.35 && ratioLengthToWidth < 1.65) return 'Oval';
-  if (ratioLengthToWidth < 1.35) return 'Round';
+  if (ratioLengthToCheekbone > 1.7) return 'Oblong';
+  if (ratioForeheadToJaw > 1.2 && foreheadWidth > cheekboneWidth) return 'Heart';
+  if (cheekboneWidth > foreheadWidth && cheekboneWidth > jawWidth && ratioLengthToCheekbone >= 1.4 && ratioLengthToCheekbone <= 1.6) return 'Diamond';
+  if (Math.abs(jawWidth - cheekboneWidth) < 15 && Math.abs(foreheadWidth - cheekboneWidth) < 15 && ratioLengthToCheekbone >= 1.3 && ratioLengthToCheekbone <= 1.6) return 'Square';
+  if (ratioLengthToCheekbone >= 1.4 && ratioLengthToCheekbone <= 1.7) return 'Oval';
+  if (ratioLengthToCheekbone < 1.4) return 'Round';
 
   return 'Unknown';
 }
+
 
 
 
