@@ -62,6 +62,7 @@ export class FaceAiService {
 }
 
 
+
   getSuggestions(shape: string): string {
     switch (shape) {
       case 'Round': return 'Round face: Choose hairstyles that add height to elongate your face.';
