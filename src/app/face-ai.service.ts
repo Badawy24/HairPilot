@@ -7,7 +7,7 @@ import * as faceapi from 'face-api.js';
 export class FaceAiService {
 
   private modelsLoaded = false;
-  console.log(6);
+  console.log(7);
   async loadModels() {
     if (this.modelsLoaded) return;
     const MODEL_URL = 'assets/models/';
