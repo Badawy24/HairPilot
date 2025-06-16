@@ -10,7 +10,7 @@ export class FaceAiService {
 
   async loadModels() {
     if (this.modelsLoaded) return;
-    let MODEL_URL = 'assets/models/';
+    const MODEL_URL = 'assets/models/';
     await Promise.all([
       faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL + 'tiny_face_detector'),
       faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL + 'face_landmark_68'),
@@ -23,47 +23,58 @@ export class FaceAiService {
     return await faceapi.detectSingleFace(image, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
   }
 
-  getFaceShape(landmarks: faceapi.FaceLandmarks68) {
-    let jaw = landmarks.getJawOutline();
-    let leftJaw = jaw[0], rightJaw = jaw[16], chin = jaw[8];
-    let leftCheekbone = landmarks.positions[1];
-    let rightCheekbone = landmarks.positions[15];
-    let leftForehead = landmarks.positions[19];
-    let rightForehead = landmarks.positions[24];
+  getFaceShape(landmarks: faceapi.FaceLandmarks68): string {
+    const jaw = landmarks.getJawOutline();
+    const leftJaw = jaw[0], rightJaw = jaw[16], chin = jaw[8];
+    const leftCheekbone = landmarks.positions[1];
+    const rightCheekbone = landmarks.positions[15];
+    const leftForehead = landmarks.positions[19];
+    const rightForehead = landmarks.positions[24];
 
-    let foreheadWidth = this.euclidean(leftForehead, rightForehead);
-    let cheekboneWidth = this.euclidean(leftCheekbone, rightCheekbone);
-    let jawWidth = this.euclidean(leftJaw, rightJaw);
-    let faceHeight = this.euclidean(
+    const foreheadWidth = this.euclidean(leftForehead, rightForehead);
+    const cheekboneWidth = this.euclidean(leftCheekbone, rightCheekbone);
+    const jawWidth = this.euclidean(leftJaw, rightJaw);
+    const faceHeight = this.euclidean(
       { x: (leftForehead.x + rightForehead.x) / 2, y: (leftForehead.y + rightForehead.y) / 2 },
       chin
     );
 
-    let ratio = foreheadWidth / faceHeight;
+    const ratioLengthToWidth = faceHeight / cheekboneWidth;
+    const ratioForeheadToJaw = foreheadWidth / jawWidth;
 
+    console.log({
+      foreheadWidth,
+      cheekboneWidth,
+      jawWidth,
+      faceHeight,
+      ratioLengthToWidth: ratioLengthToWidth.toFixed(2),
+      ratioForeheadToJaw: ratioForeheadToJaw.toFixed(2),
+    });
+
+    if (ratioLengthToWidth >= 1.5) return 'Oblong';
     if (Math.abs(jawWidth - cheekboneWidth) < 15 && Math.abs(foreheadWidth - cheekboneWidth) < 15) return 'Square';
     if (cheekboneWidth > foreheadWidth && cheekboneWidth > jawWidth) return 'Diamond';
     if (foreheadWidth > cheekboneWidth && foreheadWidth > jawWidth) return 'Heart';
-    if (ratio < 0.65) return 'Oblong';
-    if (ratio >= 0.65 && ratio <= 0.85) return 'Oval';
-    if (ratio > 0.85) return 'Round';
+    if (ratioLengthToWidth >= 1.3 && ratioLengthToWidth < 1.5) return 'Oval';
+    if (ratioLengthToWidth < 1.3) return 'Round';
+
     return 'Unknown';
   }
 
   getSuggestions(shape: string): string {
     switch (shape) {
-      case 'Round': return 'Round';
-      case 'Square': return 'Square';
-      case 'Oval': return 'Oval';
-      case 'Oblong': return 'Oblong';
-      case 'Diamond': return 'Diamond';
-      case 'Heart': return 'Heart';
+      case 'Round': return 'Round face: Choose hairstyles that add height to elongate your face.';
+      case 'Square': return 'Square face: Go for styles that soften the jawline.';
+      case 'Oval': return 'Oval face: Almost any hairstyle works well with this balanced shape.';
+      case 'Oblong': return 'Oblong face: Choose styles that add width, like layered or curly cuts.';
+      case 'Diamond': return 'Diamond face: Pick styles that add volume at the forehead and chin.';
+      case 'Heart': return 'Heart face: Styles that balance a wider forehead with a narrower chin.';
       default: return 'No suggestion available.';
     }
   }
 
-  getHaircutImages(faceShape: string) {
-    let images: string[] = [];
+  getHaircutImages(faceShape: string): string[] {
+    const images: string[] = [];
     for (let i = 1; i <= 3; i++) {
       images.push(`assets/result/${faceShape}/${faceShape[0].toLowerCase()}${i}.jpg`);
     }
@@ -71,18 +82,18 @@ export class FaceAiService {
   }
 
   drawDetections(image: HTMLImageElement, canvas: HTMLCanvasElement, detection: any) {
-    let displaySize = { width: image.width, height: image.height };
+    const displaySize = { width: image.width, height: image.height };
     faceapi.matchDimensions(canvas, displaySize);
-    let resized = faceapi.resizeResults(detection, displaySize);
+    const resized = faceapi.resizeResults(detection, displaySize);
 
-    let context = canvas.getContext('2d');
+    const context = canvas.getContext('2d');
     if (context) context.clearRect(0, 0, canvas.width, canvas.height);
 
     faceapi.draw.drawFaceLandmarks(canvas, resized);
     faceapi.draw.drawDetections(canvas, resized);
   }
 
-  private euclidean(p1: { x: number; y: number }, p2: { x: number; y: number }) {
+  private euclidean(p1: { x: number; y: number }, p2: { x: number; y: number }): number {
     return Math.hypot(p1.x - p2.x, p1.y - p2.y);
   }
 }
