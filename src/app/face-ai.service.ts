@@ -24,42 +24,43 @@ export class FaceAiService {
   }
 
   getFaceShape(landmarks: faceapi.FaceLandmarks68): string {
-    const jaw = landmarks.getJawOutline();
-    const leftJaw = jaw[0], rightJaw = jaw[16], chin = jaw[8];
-    const leftCheekbone = landmarks.positions[1];
-    const rightCheekbone = landmarks.positions[15];
-    const leftForehead = landmarks.positions[19];
-    const rightForehead = landmarks.positions[24];
+  const jaw = landmarks.getJawOutline();
+  const leftJaw = jaw[0], rightJaw = jaw[16], chin = jaw[8];
+  const leftCheekbone = landmarks.positions[1];
+  const rightCheekbone = landmarks.positions[15];
+  const leftForehead = landmarks.positions[19];
+  const rightForehead = landmarks.positions[24];
 
-    const foreheadWidth = this.euclidean(leftForehead, rightForehead);
-    const cheekboneWidth = this.euclidean(leftCheekbone, rightCheekbone);
-    const jawWidth = this.euclidean(leftJaw, rightJaw);
-    const faceHeight = this.euclidean(
-      { x: (leftForehead.x + rightForehead.x) / 2, y: (leftForehead.y + rightForehead.y) / 2 },
-      chin
-    );
+  const foreheadWidth = this.euclidean(leftForehead, rightForehead);
+  const cheekboneWidth = this.euclidean(leftCheekbone, rightCheekbone);
+  const jawWidth = this.euclidean(leftJaw, rightJaw);
+  const faceHeight = this.euclidean(
+    { x: (leftForehead.x + rightForehead.x) / 2, y: (leftForehead.y + rightForehead.y) / 2 },
+    chin
+  );
 
-    const ratioLengthToWidth = faceHeight / cheekboneWidth;
-    const ratioForeheadToJaw = foreheadWidth / jawWidth;
+  const ratioLengthToWidth = faceHeight / cheekboneWidth;
+  const ratioForeheadToJaw = foreheadWidth / jawWidth;
 
-    console.log({
-      foreheadWidth,
-      cheekboneWidth,
-      jawWidth,
-      faceHeight,
-      ratioLengthToWidth: ratioLengthToWidth.toFixed(2),
-      ratioForeheadToJaw: ratioForeheadToJaw.toFixed(2),
-    });
+  console.log({
+    foreheadWidth,
+    cheekboneWidth,
+    jawWidth,
+    faceHeight,
+    ratioLengthToWidth: ratioLengthToWidth.toFixed(2),
+    ratioForeheadToJaw: ratioForeheadToJaw.toFixed(2),
+  });
 
-    if (ratioLengthToWidth >= 1.5) return 'Oblong';
-    if (Math.abs(jawWidth - cheekboneWidth) < 15 && Math.abs(foreheadWidth - cheekboneWidth) < 15) return 'Square';
-    if (cheekboneWidth > foreheadWidth && cheekboneWidth > jawWidth) return 'Diamond';
-    if (foreheadWidth > cheekboneWidth && foreheadWidth > jawWidth) return 'Heart';
-    if (ratioLengthToWidth >= 1.3 && ratioLengthToWidth < 1.5) return 'Oval';
-    if (ratioLengthToWidth < 1.3) return 'Round';
+  if (ratioLengthToWidth > 1.6) return 'Oblong';
+  if (ratioForeheadToJaw > 1.1 && foreheadWidth > cheekboneWidth) return 'Heart';
+  if (cheekboneWidth > foreheadWidth && cheekboneWidth > jawWidth) return 'Diamond';
+  if (Math.abs(jawWidth - cheekboneWidth) < 20 && Math.abs(foreheadWidth - cheekboneWidth) < 20) return 'Square';
+  if (ratioLengthToWidth >= 1.3 && ratioLengthToWidth <= 1.6) return 'Oval';
+  if (ratioLengthToWidth < 1.3) return 'Round';
 
-    return 'Unknown';
-  }
+  return 'Unknown';
+}
+
 
   getSuggestions(shape: string): string {
     switch (shape) {
