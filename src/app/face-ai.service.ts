@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as faceapi from 'face-api.js';
-
+console.log(5);
 @Injectable({
   providedIn: 'root'
 })
