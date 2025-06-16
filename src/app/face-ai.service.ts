@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as faceapi from 'face-api.js';
-console.log(5);
+
 @Injectable({
   providedIn: 'root'
 })
 export class FaceAiService {
 
   private modelsLoaded = false;
-
+  console.log(5);
   async loadModels() {
     if (this.modelsLoaded) return;
     const MODEL_URL = 'assets/models/';
